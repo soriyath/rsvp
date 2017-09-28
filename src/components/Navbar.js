@@ -47,10 +47,12 @@ class Navbar extends Component {
     // i can have some logic here
 
     return ( // JSX starts here
-      <AppBar
-        className="navbar"
-        title={this.state.title}>
-      </AppBar>
+      <div className="navbar">
+        <AppBar
+          title={this.state.title}>
+        </AppBar>
+        {this.props.children}
+      </div>
     );
   }
 };

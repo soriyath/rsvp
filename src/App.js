@@ -46,10 +46,12 @@ class App extends React.Component {
         <IntlProvider locale={locale} messages={messages}>
           <MuiThemeProvider>
             <div className='main-layout'>
-              <Navbar title={title}></Navbar>
-              <main className="content">
-                <ListEvents></ListEvents>
-              </main>
+              <Navbar title={title}>
+                <main className="content">
+                  <ListEvents></ListEvents>
+                </main>
+              </Navbar>
+              <div className="empty_placeholder"></div>
               <Footer companyName="The Monkey Company" onChange={this.footerWasClicked} />
             </div>
           </MuiThemeProvider>

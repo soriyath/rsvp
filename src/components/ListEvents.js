@@ -11,6 +11,12 @@ import ActionGrade from 'material-ui/svg-icons/action/grade';
 import Divider from 'material-ui/Divider';
 import ActionInfo from 'material-ui/svg-icons/action/info';
 
+const styles = {
+  listItem : {
+    borderBottom : "1px solid grey"
+  }
+};
+
 class ListEvents extends Component {
 
   constructor(props, context) {
@@ -27,7 +33,9 @@ class ListEvents extends Component {
     return (
       <List>
         {Utils.arrayHasElements(events) && events.map((e, id, arr) => {
-          return <ListItem primaryText={`${e.title} - ${e.date}`} leftIcon={<ActionGrade />} />;
+          return (
+            <ListItem style={styles.listItem} primaryText={`${e.title} - ${e.date}`} leftIcon={<ActionGrade />} />
+          );
         })}
       </List>
     );
