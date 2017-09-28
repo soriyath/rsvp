@@ -13,12 +13,44 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
+// UI Stuff
+import AppBar from 'material-ui/AppBar';
+
 class Navbar extends Component {
+  constructor(props, context) {
+      super(props, context);
+      this.state = {
+        title : props.title || "No Title Error"
+      };
+  }
+
+  // shouldComponentUpdate(nextProps, nextState){
+  //   return false;
+  // }
+
+  // see lifecycle methods: https://facebook.github.io/react/docs/react-component.html
+  componentWillMount(){
+    this.setState({
+      title : "The Chimpanze Company"
+    });
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    if (this.state.title != nextProps.title){
+      this.setState({
+        title : nextProps.title
+      })
+    }
+  }
+
   render(){
     // i can have some logic here
 
     return ( // JSX starts here
-      <header className="navbar">I am a Navbar</header>
+      <AppBar
+        className="navbar"
+        title={this.state.title}>
+      </AppBar>
     );
   }
 };

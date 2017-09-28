@@ -3,6 +3,9 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Utils from './utils';
 
+// UI Stuff
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
 // Locale related
 import { addLocaleData, IntlProvider } from 'react-intl';
 import localeData from 'locale-data';
@@ -18,24 +21,31 @@ class App extends React.Component {
   constructor(props, context) {
     super(props, context);
 
+    this.state = {
+      title : "The Monkey Company"
+    };
+
     this.footerWasClicked = this.footerWasClicked.bind(this);
   }
 
   footerWasClicked(e) {
     Utils.log("info", this.constructor.name, "The Monkey Company was clicked.");
+    this.setState({
+      title: "The Urang-Utan Company"
+    });
   }
 
   render(){
+    const {title} = this.state;
     return (
-        <IntlProvider
-            locale={ locale }
-            messages={ messages }
-        >
+        <IntlProvider locale={locale} messages={messages}>
+          <MuiThemeProvider>
             <div className='main-layout'>
-              <Navbar></Navbar>
+              <Navbar title={title}></Navbar>
               <main className="content">Lorem Ipsum</main>
               <Footer companyName="The Monkey Company" onChange={this.footerWasClicked} />
             </div>
+          </MuiThemeProvider>
         </IntlProvider>
     );
   }
