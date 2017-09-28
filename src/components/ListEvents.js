@@ -5,6 +5,12 @@ import Utils from '../utils';
 // POJO
 import MockEvents from '../../test/fixtures/mockEvents';
 
+// UI Stuff
+import {List, ListItem} from 'material-ui/List';
+import ActionGrade from 'material-ui/svg-icons/action/grade';
+import Divider from 'material-ui/Divider';
+import ActionInfo from 'material-ui/svg-icons/action/info';
+
 class ListEvents extends Component {
 
   constructor(props, context) {
@@ -19,11 +25,11 @@ class ListEvents extends Component {
     const {events} = this.state;
 
     return (
-      <ul>
+      <List>
         {Utils.arrayHasElements(events) && events.map((e, id, arr) => {
-          return <li>{e.title} - {e.date}</li>;
+          return <ListItem primaryText={`${e.title} - ${e.date}`} leftIcon={<ActionGrade />} />;
         })}
-      </ul>
+      </List>
     );
   }
 
