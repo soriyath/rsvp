@@ -1,5 +1,5 @@
 # Monkey
-
+> uses yeoman generator https://github.com/jeantimex/generator-react-webpack-scaffold
 About this project
 
 ## ReactJS
@@ -15,6 +15,10 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
   react-hot-loader react-addons-test-utils
 ```
 
+> if node-gyp fails to install on windows, see https://github.com/nodejs/node-gyp
+>
+> Tl;DR as administrator, run: `npm install --global --production windows-build-tools node-gyp`
+
 ### Project Architecture
 >
 
@@ -26,7 +30,7 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
 ### Dependencies
 ```
 npm install --save redux redux-thunk react-redux react-router-redux
-npm install --save-dev redux-immutable-state-invariant
+npm install --save-dev redux-immutable-state-invariant redux-devtools
 ```
 
 ### Architecture
