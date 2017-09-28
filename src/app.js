@@ -1,5 +1,5 @@
 import React from 'react';
-import Menu from 'components/menu';
+import Footer from './components/Footer';
 
 // Locale related
 import { addLocaleData, IntlProvider } from 'react-intl';
@@ -17,8 +17,10 @@ const App = () => (
         locale={ locale }
         messages={ messages }
     >
-        <div className='mainApp'>
-            <Menu />
+        <div className='main-layout'>
+          <header className="navbar">I am a navbar</header>
+          <main className="content">Lorem Ipsum</main>
+          <Footer />
         </div>
     </IntlProvider>
 );

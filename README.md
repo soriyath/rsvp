@@ -1,6 +1,8 @@
-# Monkey
+# The Monkey App
 > uses yeoman generator https://github.com/jeantimex/generator-react-webpack-scaffold
 About this project
+
+TODO detail yeoman howto
 
 ## ReactJS
 ### Dependencies
@@ -22,9 +24,9 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
 ### Project Architecture
 >
 
-*. js/commons <-- shared React components
-*. js/components <-- all React components used for end user features
-*. js/vendor <-- place for js libraries that cannot be easily imported from node_modules
+* js/commons <-- shared React components
+* js/components <-- all React components used for end user features
+* js/vendor <-- place for js libraries that cannot be easily imported from node_modules
 
 ## Redux
 ### Dependencies
@@ -34,15 +36,15 @@ npm install --save-dev redux-immutable-state-invariant redux-devtools
 ```
 
 ### Architecture
-*. js/actions
-*. js/actions/actionTypes.js
-*. js/actions/sthActions.js
-*. js/api
-*. js/api/sthApi.js <-- ajax calls here
-*. js/reducers
-*. js/reducers/index.js <-- entry point for Redux reducers, imports all the reducers
-*. js/reducers/initialState.js <-- initial state of the store
-*. js/reducers/sthReducer.js
-*. js/store
-*. js/configureStore.js <-- creates the store using reducers and initial states
-*. app.js <-- add Provider from react-redux, create the store and populate it.
+* js/actions
+* js/actions/actionTypes.j   s
+* js/actions/sthActions.js
+* js/api
+* js/api/sthApi.js <-- ajax calls here
+* js/reducers
+* js/reducers/index.js <-- entry point for Redux reducers, imports all the reducers
+* js/reducers/initialState.js <-- initial state of the store
+* js/reducers/sthReducer.js
+* js/store
+* js/configureStore.js <-- creates the store using reducers and initial states
+* app.js <-- add Provider from react-redux, create the store and populate it.
