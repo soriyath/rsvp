@@ -6,6 +6,9 @@ import Utils from './utils';
 // UI Stuff
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+// components
+import ListEvents from './components/ListEvents';
+
 // Locale related
 import { addLocaleData, IntlProvider } from 'react-intl';
 import localeData from 'locale-data';
@@ -44,7 +47,9 @@ class App extends React.Component {
           <MuiThemeProvider>
             <div className='main-layout'>
               <Navbar title={title}></Navbar>
-              <main className="content">Lorem Ipsum</main>
+              <main className="content">
+                <ListEvents></ListEvents>
+              </main>
               <Footer companyName="The Monkey Company" onChange={this.footerWasClicked} />
             </div>
           </MuiThemeProvider>

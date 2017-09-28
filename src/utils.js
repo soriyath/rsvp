@@ -9,6 +9,10 @@ const Utils = function(){
     let API = {
       log : function(level, sender, msg) {
         console.log(`${moment().format()}, ${level}, ${sender}, ${msg}`);
+      },
+
+      arrayHasElements : function(arr) {
+        return arr && arr.constructor.name == "Array" && arr.length > 0;
       }
     };
 
