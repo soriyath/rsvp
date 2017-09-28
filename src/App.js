@@ -22,14 +22,16 @@ class App extends React.Component {
     super(props, context);
 
     this.state = {
-      title : "The Monkey Company"
+      title : "The Monkey Company",
+      age : 42
     };
 
     this.footerWasClicked = this.footerWasClicked.bind(this);
   }
 
-  footerWasClicked(e) {
-    Utils.log("info", this.constructor.name, "The Monkey Company was clicked.");
+  footerWasClicked(e,arg1,arg2,arg3) {
+    console.log(e,arg1,arg2,arg3);
+    Utils.log("info", this.constructor.name, "The Monkey Company was clicked. Monkey age: "+this.state.age);
     this.setState({
       title: "The Urang-Utan Company"
     });

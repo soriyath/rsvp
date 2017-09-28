@@ -3,6 +3,8 @@
 About this project
 
 TODO detail yeoman howto
+TODO add explanations about flow and apm install flow
+TODO add chrome extension react devtools & redux dev tools
 
 ## ReactJS
 ### Dependencies
@@ -27,6 +29,10 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
 * js/commons <-- shared React components
 * js/components <-- all React components used for end user features
 * js/vendor <-- place for js libraries that cannot be easily imported from node_modules
+
+### Some references
+* https://code.facebook.com/videos/786462671439502/react-js-conf-2015-keynote-introducing-react-native-/
+* http://ionicframework.com/ (angular 4 / ionic 2)
 
 ## Redux
 ### Dependencies

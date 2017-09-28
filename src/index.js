@@ -6,7 +6,7 @@ import React from 'react';
 import { render } from 'react-dom';
 
 // Project components
-import App from './app';
+import App from './App';
 
 render(
     <App />,
