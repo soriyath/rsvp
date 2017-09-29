@@ -50,18 +50,6 @@ apm install flow-ide
 apm install linter-flow
 ```
 
-##### Atom integration
-Windows, run this in MS-DOS CLI as administrator:
-
-```
-apm install autocomplete-flow
-```
-
-Do one of the following:
-```
-apm install nuclide
-```
-
 ### Project Architecture
 >
 
