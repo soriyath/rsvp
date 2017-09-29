@@ -11,7 +11,8 @@
     "lint": "node_modules/.bin/eslint ./src",
     "start": "node server.js",
     "test": "npm run lint && node_modules/.bin/karma start --single-run --no-auto-watch karma.config.js",
-    "dev": "npm run clean && npm run build && npm run start"
+    "dev": "npm run clean && npm run build && npm run start",
+    "flow": "flow"
   },
   "keywords": [
     "react",
@@ -63,6 +64,7 @@
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
     "babel-preset-es2015": "^6.9.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
@@ -116,7 +118,7 @@
     "redux-devtools": "^3.4.0",
     "redux-immutable-state-invariant": "^2.0.0",
     "sass-loader": "^4.0.0",
-    "sinon": "^1.17.4",
+    "sinon": "^1.17.7",
     "sinon-chai": "^2.8.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",

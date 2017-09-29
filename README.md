@@ -7,7 +7,19 @@ TODO add explanations about flow and apm install flow
 TODO add chrome extension react devtools & redux dev tools
 
 ## ReactJS
+
 ### Dependencies
+
+#### Only on Windows
+> if node-gyp fails to install on windows, see https://github.com/nodejs/node-gyp
+
+**TL;DR** as administrator, run:
+```
+npm install --global --production windows-build-tools
+npm install --global --production node-gyp
+```
+
+#### OS X / Linux / Windows
 ```
 npm install --save react react-router prop-types react-dom
 npm install --save axios moment object-assign toastr material-ui
@@ -18,10 +30,6 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
   babel-plugin-transform-react-remove-prop-types \
   react-hot-loader react-addons-test-utils
 ```
-
-> if node-gyp fails to install on windows, see https://github.com/nodejs/node-gyp
->
-> Tl;DR as administrator, run: `npm install --global --production windows-build-tools node-gyp`
 
 ### Project Architecture
 >
@@ -36,14 +44,16 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
 
 ## Redux
 ### Dependencies
+
 ```
 npm install --save redux redux-thunk react-redux react-router-redux
 npm install --save-dev redux-immutable-state-invariant redux-devtools
 ```
 
 ### Architecture
+
 * js/actions
-* js/actions/actionTypes.j   s
+* js/actions/actionTypes.js
 * js/actions/sthActions.js
 * js/api
 * js/api/sthApi.js <-- ajax calls here

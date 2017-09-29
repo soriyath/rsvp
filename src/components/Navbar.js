@@ -10,6 +10,8 @@
 // const arr = [0,1,2,3,4];
 // const [firstNumber, ...rest] = arr; // firstNumber is equal to 0, rest is equal to [1,2,3,4]
 
+// @flow
+
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
@@ -28,10 +30,14 @@ class Navbar extends Component {
   //   return false;
   // }
 
+  getTitle(title: string): string {
+    return 42; // "The Chimpanze Company"
+  }
+
   // see lifecycle methods: https://facebook.github.io/react/docs/react-component.html
   componentWillMount(){
     this.setState({
-      title : "The Chimpanze Company"
+      title : this.getTitle(42)
     });
   }
 
