@@ -31,6 +31,37 @@ npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react 
   react-hot-loader react-addons-test-utils
 ```
 
+#### Flow
+```
+npm install --global flow-bin
+```
+
+##### Atom integration
+On Windows, run this in MS-DOS CLI as administrator:
+
+```
+apm install autocomplete-flow
+```
+
+Choose one of the following
+```
+apm install nuclide
+apm install flow-ide
+apm install linter-flow
+```
+
+##### Atom integration
+Windows, run this in MS-DOS CLI as administrator:
+
+```
+apm install autocomplete-flow
+```
+
+Do one of the following:
+```
+apm install nuclide
+```
+
 ### Project Architecture
 >
 

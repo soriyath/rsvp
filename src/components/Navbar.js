@@ -30,14 +30,10 @@ class Navbar extends Component {
   //   return false;
   // }
 
-  getTitle(title: string): string {
-    return 42; // "The Chimpanze Company"
-  }
-
   // see lifecycle methods: https://facebook.github.io/react/docs/react-component.html
   componentWillMount(){
     this.setState({
-      title : this.getTitle(42)
+      title : "The Chimpanze Company"
     });
   }
 
