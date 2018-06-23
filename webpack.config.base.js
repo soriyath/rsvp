@@ -53,7 +53,7 @@ module.exports = function webpackConfig() {
 
     // If you pass an array - the modules are loaded on startup. The last one is exported.
     output: {
-      filename: 'bundle.js',
+      filename: 'main.js',
     },
 
     module: {
