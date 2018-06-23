@@ -1,3 +1,4 @@
+//@flow
 import React, {Component} from 'react'
 import Utils from '../utils'
 
@@ -5,10 +6,9 @@ import Utils from '../utils'
 import MockEvents from '../../test/fixtures/mockEvents'
 
 // UI Stuff
-import {List, ListItem} from '@material-ui/core/List'
+import {List, ListItem, ListItemIcon, ListItemText} from '@material-ui/core'
 import Divider from '@material-ui/core/Divider'
-import ActionInfo from '@material-ui/icons'
-import ActionGrade from '@material-ui/icons'
+import Grade from '@material-ui/icons/Grade'
 
 const styles = {
   listItem : {
@@ -31,9 +31,12 @@ class ListEvents extends Component {
 
     return (
       <List>
-        {events.map((e, id, arr) => {
+        {events.map(({title, date}, idx) => {
           return (
-            <ListItem style={styles.listItem} primaryText={`${e.title} - ${e.date}`} leftIcon={<ActionGrade />} />
+            <ListItem style={styles.listItem} key={idx}>
+              <ListItemIcon><Grade /></ListItemIcon>
+              <ListItemText primary={`${title} - ${date}`} />
+            </ListItem>
           )
         })}
       </List>
