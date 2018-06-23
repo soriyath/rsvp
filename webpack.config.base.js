@@ -32,55 +32,72 @@
  */
 
 /* eslint-disable no-var */
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var propsParser = require('properties-parser');
-var webpack = require('webpack');
-var path = require('path');
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var webpack = require('webpack')
+var path = require('path')
+const extractSass = new ExtractTextPlugin({
+    filename: "[name].[hash].css",
+    disable: process.env.NODE_ENV === "development"
+})
 
-module.exports = function webpackConfig(locale) {
-
-  var messagePath = path.resolve('i18n', (locale + '.properties'));
-  var messages = propsParser.read(messagePath);
-
-  locale = locale.substr(0, locale.indexOf('-'));
+module.exports = function webpackConfig() {
 
   return {
+
+    mode: "development",
 
     // Entry point for the bundle.
     entry: [
       './src/index'
     ],
 
-    module: {
-      loaders: [
-        {
-          test: /\.json$/,
-          loader: 'json',
-          exclude: /node_modules/
-        },
-        {
-          test: /\.s?css$/,
-          loader: ExtractTextPlugin.extract(
-            'style',
-            'css?sourceMap!sass?sourceMap'
-          )
-        }
-      ]
-    },
-
     // If you pass an array - the modules are loaded on startup. The last one is exported.
     output: {
       filename: 'bundle.js',
     },
 
+    module: {
+
+      rules: [
+        {
+          test: /\.json$/, use: 'json-loader', exclude: /node_modules/
+        },
+        {
+          test: /\.scss$/,
+          use: extractSass.extract({
+            use:
+              [
+                {
+                  loader: "css-loader",
+                  options: {
+                    minimize: true,
+                    sourceMap: true
+                  }
+                },
+                {
+                  loader: "sass-loader"
+                }
+              ],
+            // use style-loader in development
+            fallback: "style-loader"
+          })
+        },
+        {
+          test: /\.css$/,
+          use: extractSass.extract(
+            {
+              fallback: "style-loader",
+              use: "css-loader"
+            }
+          )
+        }
+      ]
+    },
+
     plugins: [
       new ExtractTextPlugin('styles.css'),
-      new webpack.NoErrorsPlugin(),
+      new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({
-        __I18N__: JSON.stringify({
-          locale,
-          messages,
-        }),
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
@@ -89,13 +106,12 @@ module.exports = function webpackConfig(locale) {
 
     // Array of file extensions used to resolve modules.
     resolve: {
-      extensions: ['', '.js', '.jsx', '.css', '.scss'],
+      extensions: ['.js', '.jsx', '.css', '.scss'],
       alias: {
         components: path.join(__dirname, 'src/components'),
-        'locale-data': 'react-intl/locale-data/' + locale,
       },
     },
 
-  };
+  }
 
-};
+}

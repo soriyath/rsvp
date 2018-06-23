@@ -9,16 +9,28 @@ Once Atom is installed, you can use the CLI to install Nuclide with `apm install
 
 For a better debugging experience, you may want to use Chrome with the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi).
 
+This project has been made with Node v9 and npm v6. It may work with previous versions.
+Consider using [nvm](https://github.com/creationix/nvm) to manage multiple node versions on your computer.
+
+I recommend using [yarn](https://yarnpkg.com/en/docs/install) to manage your dependencies, provided your environment allows it.
+
 ## Run the project
 
 In a terminal, run :
+
+```
+yarn
+yarn start
+```
+
+or
 
 ```
 npm install
 npm start
 ```
 
-and go to http://localhost:5000 (or whatever port the terminal instructs you) with your favorite browser.
+and go to http://localhost:5000 with your favorite browser.
 
 ## Project Architecture
 

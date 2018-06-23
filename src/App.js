@@ -3,22 +3,11 @@ import Footer from './components/Footer';
 import Navbar from './components/Navbar';
 import Utils from './utils';
 
-// UI Stuff
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-
 // components
 import ListEvents from './components/ListEvents';
 
-// Locale related
-import { addLocaleData, IntlProvider } from 'react-intl';
-import localeData from 'locale-data';
-
 // Styles
 import './styles.scss';
-
-addLocaleData(localeData);
-
-const { locale, messages } = __I18N__;
 
 class App extends React.Component {
   constructor(props, context) {
@@ -43,19 +32,15 @@ class App extends React.Component {
   render(){
     const {title} = this.state;
     return (
-        <IntlProvider locale={locale} messages={messages}>
-          <MuiThemeProvider>
-            <div className='main-layout'>
-              <Navbar title={title}>
-                <main className="content">
-                  <ListEvents></ListEvents>
-                </main>
-              </Navbar>
-              <div className="empty_placeholder"></div>
-              <Footer companyName="The Monkey Company" onChange={this.footerWasClicked} />
-            </div>
-          </MuiThemeProvider>
-        </IntlProvider>
+      <div className='main-layout'>
+        <Navbar title={title}>
+          <main className="content">
+            <ListEvents></ListEvents>
+          </main>
+        </Navbar>
+        <div className="empty_placeholder"></div>
+        <Footer companyName="The Monkey Company" onChange={this.footerWasClicked} />
+      </div>
     );
   }
 }

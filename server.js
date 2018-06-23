@@ -2,14 +2,13 @@
 var webpack = require('webpack');
 var WebpackDevServer = require('webpack-dev-server');
 var webpackConfig = require('./webpack.config.base');
-var locale = process.env.LOCALE || 'en-US';
-var config = webpackConfig(locale);
+var config = webpackConfig();
 var port = 5000;
 
 // Settings for dev server
 var babelLoader = {
     test: /\.jsx?$/,
-    loaders: ['react-hot', 'babel'],
+    use: ['babel-loader?presets[]=react'],
     exclude: /node_modules/,
 };
 
@@ -20,7 +19,7 @@ config.entry = config.entry.concat([
     `webpack-dev-server/client?http://localhost:${port}`,
     'webpack/hot/dev-server'
 ]);
-config.module.loaders.push(babelLoader);
+config.module.rules.push(babelLoader);
 config.output.path = __dirname;
 config.plugins = config.plugins.concat([
     new webpack.HotModuleReplacementPlugin()

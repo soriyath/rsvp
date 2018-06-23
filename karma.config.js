@@ -1,10 +1,11 @@
 const webpackConfig = require('./webpack.config.karma');
+process.env.CHROME_BIN = require('puppeteer').executablePath()
 
 module.exports = function (config) {
 
   config.set({
 
-    browsers: ['PhantomJS'],
+    browsers: ['ChromeHeadless'],
 
     captureConsole: true,
 
@@ -19,7 +20,6 @@ module.exports = function (config) {
     },
 
     files: [
-      './node_modules/phantomjs-polyfill/bind-polyfill.js',
       './node_modules/intl/dist/Intl.js',
       './test/test.bundle.js',
     ],
@@ -33,7 +33,7 @@ module.exports = function (config) {
       'karma-coverage',
       'karma-mocha',
       'karma-mocha-reporter',
-      'karma-phantomjs-launcher',
+      'karma-chrome-launcher',
       'karma-sourcemap-loader',
       'karma-spec-reporter',
       'karma-threshold-reporter',

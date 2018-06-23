@@ -6,12 +6,11 @@
 var path = require('path');
 var webpack = require('webpack');
 var webpackConfig = require('./webpack.config.base');
-var locale = process.env.LOCALE || 'en-US';
-var config = webpackConfig(locale);
+var config = webpackConfig();
 
 var babelLoader = {
     test: /\.jsx?$/,
-    loaders: ['babel'],
+    use: ['babel-loader'],
     exclude: /node_modules/,
 };
 
@@ -19,14 +18,9 @@ var babelLoader = {
 // The source map file will only be downloaded if you have source maps enabled and your dev tools open.
 config.devtool = 'source-map';
 config.module.loaders.push(babelLoader);
-config.output.path = path.resolve('dist', locale);
+config.output.path = path.resolve('dist');
 config.plugins = config.plugins.concat([
-    new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false,
-        },
-    })
+    new webpack.optimize.OccurenceOrderPlugin()
 ]);
 
 module.exports = config;

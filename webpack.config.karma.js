@@ -2,12 +2,8 @@
  * Webpack Configuration for Karma
  */
 
-var propsParser = require('properties-parser');
 var path = require('path');
 var webpack = require('webpack');
-var messagePath = path.resolve('i18n', 'en-US.properties');
-var messages = propsParser.read(messagePath);
-var locale = 'en';
 
 module.exports = {
 
@@ -22,24 +18,19 @@ module.exports = {
 
   devtool: 'source-map',
 
-  isparta: {
-    embedSource: true,
-    noAutoWrap: true,
-  },
-
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.json$/,
-        loader: 'json',
+        use: 'json-loader',
       },
       {
         test: /\.css$/,
-        loader: 'style-loader!css-loader',
+        use: 'style-loader!css-loader',
       },
       {
         test: /\.scss$/,
-        loader: 'css!sass',
+        use: 'css-loader!sass-loader',
       }
     ],
 
@@ -48,13 +39,13 @@ module.exports = {
     preLoaders: [
       {
         test: /\.js$/,
-        loader: 'isparta',
+        use: { loader: 'istanbul-instrumenter-loader' },
         include: path.resolve('src'),
         exclude: path.resolve('node_modules'),
       },
       {
         test: [/\.spec.js$/, /\.js$/],
-        loader: 'babel',
+        use: 'babel-loader',
         include: [
           path.resolve('test'),
           path.resolve('scripts'),
@@ -63,15 +54,6 @@ module.exports = {
       }
     ]
   },
-
-  plugins: [
-    new webpack.DefinePlugin({
-      __I18N__: JSON.stringify({
-        locale,
-        messages,
-      }),
-    }),
-  ],
 
   resolve: {
     alias: {
