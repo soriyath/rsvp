@@ -1,85 +1,78 @@
 # The Monkey App
-> uses yeoman generator https://github.com/jeantimex/generator-react-webpack-scaffold
-About this project
 
-TODO detail yeoman howto
-TODO add explanations about flow and apm install flow
-TODO add chrome extension react devtools & redux dev tools
+> Fake RSVP app to learn ReactJS
 
-## ReactJS
+## Recommended environment
 
-### Dependencies
+I suggest you work with [Atom IDE](https://atom.io/) and the [Nuclide package](https://nuclide.io).<br />
+Once Atom is installed, you can use the CLI to install Nuclide with `apm install nuclide`.
 
-#### Only on Windows
-> if node-gyp fails to install on windows, see https://github.com/nodejs/node-gyp
+For a better debugging experience, you may want to use Chrome with the [React Developer Tools](https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi).
+
+## Run the project
+
+In a terminal, run :
+
+```
+npm install
+npm start
+```
+
+and go to http://localhost:5000 (or whatever port the terminal instructs you) with your favorite browser.
+
+## Project Architecture
+
+React suggest to differentiate Presentational component (aka dumb components), container components (aka smart components) and higher-order components (components that receive components as parameters or return components)
+
+We favor here a simpler approach. Your project can always evolve and adopt an approach with more isolation between components and component types.
+
+My belief is that the structure of the project should not come in the way of learning the technology or bring value to the end users.
+
+```
+.
+├── LICENSE
+├── README.md
+├── i18n
+│   ├── en-US.properties
+│   └── zh-CN.properties
+├── index.html
+├── karma.config.js
+├── node_modules                  # project dependencies (not listed)
+├── package-lock.json
+├── package.json
+├── scripts
+│   ├── intl-helper.js
+│   └── release.js
+├── server.js
+├── src
+│   ├── App.js
+│   ├── commons                   # shared React component
+│   ├── components                # all React components used for end user features
+│   │   ├── Footer.js
+│   │   ├── ListEvents.js
+│   │   ├── Navbar.js
+│   │   ├── menu.js
+│   │   └── styles.scss
+│   ├── index.js
+│   ├── polyfills.js
+│   ├── styles.scss
+│   └── utils.js
+├── test
+│   ├── components
+│   ├── fixtures
+│   └── test.bundle.js
+├── webpack.config.base.js
+├── webpack.config.js
+└── webpack.config.karma.js
+```
+
+## Troubleshooting
+
+### Node-gyp (only on Windows)
+If node-gyp fails to install on windows, see https://github.com/nodejs/node-gyp
 
 **TL;DR** as administrator, run:
 ```
 npm install --global --production windows-build-tools
 npm install --global --production node-gyp
 ```
-
-#### OS X / Linux / Windows
-```
-npm install --save react react-router prop-types react-dom
-npm install --save axios moment object-assign toastr material-ui
-npm install --save-dev babel-preset-stage-0 babel-preset-env babel-preset-react \
-  babel-preset-react-hmre babel-polyfill babel-cli babel-core babel-eslint \
-  babel-plugin-transform-object-rest-spread \
-  babel-plugin-transform-react-constant-elements \
-  babel-plugin-transform-react-remove-prop-types \
-  react-hot-loader react-addons-test-utils
-```
-
-#### Flow
-```
-npm install --global flow-bin
-```
-
-##### Atom integration
-On Windows, run this in MS-DOS CLI as administrator:
-
-```
-apm install autocomplete-flow
-```
-
-Choose one of the following
-```
-apm install nuclide
-apm install flow-ide
-apm install linter-flow
-```
-
-### Project Architecture
->
-
-* js/commons <-- shared React components
-* js/components <-- all React components used for end user features
-* js/vendor <-- place for js libraries that cannot be easily imported from node_modules
-
-### Some references
-* https://code.facebook.com/videos/786462671439502/react-js-conf-2015-keynote-introducing-react-native-/
-* http://ionicframework.com/ (angular 4 / ionic 2)
-
-## Redux
-### Dependencies
-
-```
-npm install --save redux redux-thunk react-redux react-router-redux
-npm install --save-dev redux-immutable-state-invariant redux-devtools
-```
-
-### Architecture
-
-* js/actions
-* js/actions/actionTypes.js
-* js/actions/sthActions.js
-* js/api
-* js/api/sthApi.js <-- ajax calls here
-* js/reducers
-* js/reducers/index.js <-- entry point for Redux reducers, imports all the reducers
-* js/reducers/initialState.js <-- initial state of the store
-* js/reducers/sthReducer.js
-* js/store
-* js/configureStore.js <-- creates the store using reducers and initial states
-* app.js <-- add Provider from react-redux, create the store and populate it.
