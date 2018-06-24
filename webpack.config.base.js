@@ -36,6 +36,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var WebpackMd5Hash = require('webpack-md5-hash')
 var MiniCssExtractPlugin = require('mini-css-extract-plugin')
+var CleanWebpackPlugin = require('clean-webpack-plugin')
+var DashboardPlugin = require('webpack-dashboard/plugin')
 var webpack = require('webpack')
 var path = require('path')
 
@@ -67,6 +69,7 @@ module.exports = function webpackConfig() {
             'style-loader',
             MiniCssExtractPlugin.loader,
             'css-loader',
+            'postcss-loader',
             'sass-loader'
           ],
         }
@@ -74,6 +77,8 @@ module.exports = function webpackConfig() {
     },
 
     plugins: [
+      new DashboardPlugin(),
+      new CleanWebpackPlugin('dist', {}),
       new MiniCssExtractPlugin({
         filename: 'style.[contenthash].css'
       }),
@@ -89,7 +94,7 @@ module.exports = function webpackConfig() {
         'process.env': {
           NODE_ENV: JSON.stringify(process.env.NODE_ENV),
         },
-      }),
+      })
     ],
 
     // Array of file extensions used to resolve modules.

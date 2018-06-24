@@ -12,10 +12,10 @@
 
 // @flow
 
-import React, {Component} from 'react';
+import React, {Component} from 'react'
 
 // UI Stuff
-import {AppBar, Typography} from '@material-ui/core';
+import {AppBar, Typography} from '@material-ui/core'
 
 class Navbar extends Component {
   constructor(props, context) {
@@ -48,8 +48,8 @@ class Navbar extends Component {
     // i can have some logic here
 
     return ( // JSX starts here
-      <div className="navbar" position='static' color='default'>
-        <AppBar>
+      <div className="navbar">
+        <AppBar position='static' color='primary'>
           <Typography variant="title" color="inherit">
             {this.state.title}
           </Typography>
@@ -60,4 +60,4 @@ class Navbar extends Component {
   }
 };
 
-export default Navbar;
+export default Navbar

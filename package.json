@@ -9,7 +9,7 @@
     "clean": "rm -rf dist coverage",
     "coveralls": "npm run test && cat ./coverage/lcov/lcov.info | coveralls",
     "lint": "node_modules/.bin/eslint ./src",
-    "start": "node server.js",
+    "start": "webpack-dashboard -- node server.js",
     "test": "npm run lint && node_modules/.bin/karma start --single-run --no-auto-watch karma.config.js",
     "dev": "npm run clean && npm run build && npm run start",
     "flow": "flow"
@@ -59,6 +59,7 @@
     "babel-preset-react-hmre": "^1.1.1",
     "babel-preset-stage-0": "^6.24.1",
     "chai": "^4.1.2",
+    "clean-webpack-plugin": "^0.1.19",
     "core-js": "^2.5.7",
     "coveralls": "^3.0.1",
     "css-loader": "^0.28.11",
@@ -106,6 +107,7 @@
     "style-loader": "^0.21.0",
     "webpack": "^4.12.0",
     "webpack-cli": "^3.0.8",
+    "webpack-dashboard": "^1.0.0",
     "webpack-dev-server": "^3.1.4",
     "webpack-md5-hash": "^0.0.6"
   }
