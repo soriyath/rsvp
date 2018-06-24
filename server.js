@@ -26,7 +26,6 @@ config.plugins = config.plugins.concat([
 ]);
 
 new WebpackDevServer(webpack(config), {
-    publicPath: '/static/',
     hot: true,
     historyApiFallback: true
 }).listen(port, 'localhost', function (err) {

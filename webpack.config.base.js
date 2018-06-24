@@ -33,18 +33,17 @@
 
 /* eslint-disable no-var */
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
+var WebpackMd5Hash = require('webpack-md5-hash')
+var MiniCssExtractPlugin = require('mini-css-extract-plugin')
 var webpack = require('webpack')
 var path = require('path')
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].[hash].css",
-    disable: process.env.NODE_ENV === "development"
-})
 
 module.exports = function webpackConfig() {
 
   return {
 
-    mode: "development",
+    mode: 'development',
 
     // Entry point for the bundle.
     entry: [
@@ -53,7 +52,7 @@ module.exports = function webpackConfig() {
 
     // If you pass an array - the modules are loaded on startup. The last one is exported.
     output: {
-      filename: 'main.js',
+      filename: '[name].[hash].js',
     },
 
     module: {
@@ -64,38 +63,27 @@ module.exports = function webpackConfig() {
         },
         {
           test: /\.scss$/,
-          use: extractSass.extract({
-            use:
-              [
-                {
-                  loader: "css-loader",
-                  options: {
-                    minimize: true,
-                    sourceMap: true
-                  }
-                },
-                {
-                  loader: "sass-loader"
-                }
-              ],
-            // use style-loader in development
-            fallback: "style-loader"
-          })
-        },
-        {
-          test: /\.css$/,
-          use: extractSass.extract(
-            {
-              fallback: "style-loader",
-              use: "css-loader"
-            }
-          )
+          use: [
+            'style-loader',
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'sass-loader'
+          ],
         }
       ]
     },
 
     plugins: [
-      new ExtractTextPlugin('styles.css'),
+      new MiniCssExtractPlugin({
+        filename: 'style.[contenthash].css'
+      }),
+      new HtmlWebpackPlugin({
+        inject: false,
+        hash: true,
+        template: './src/index.html',
+        filename: 'index.html'
+      }),
+      new WebpackMd5Hash(),
       new webpack.NoEmitOnErrorsPlugin(),
       new webpack.DefinePlugin({
         'process.env': {
@@ -111,7 +99,5 @@ module.exports = function webpackConfig() {
         components: path.join(__dirname, 'src/components'),
       },
     },
-
   }
-
 }
